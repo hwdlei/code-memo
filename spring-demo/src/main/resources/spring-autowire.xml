@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.2.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd"
+        default-autowire="constructor">
+        <!-- 
+        	Bean的自动装配（Autowiring）
+        	1. No:不做任何操作
+        	2. byName:根据属性名自动装配。若有多个id相同的bean，则报错。
+        	3. byType：如果容器中存在一个与指定属性类型相同的bean,那么将与该属性制动装配。
+        			   存在多个，则报异常，并指出不能用byType
+        			   不存在，则不操作，即为null
+        	4. constructor: 与byType类似，但它应用与构造器，若无类型一致，则报异常
+        	
+         -->
+	<bean id="autowireDao111" class="zx.soft.spring.demo.autowiring.AutoWiringDao" />
+	<bean id="autowireService" class="zx.soft.spring.demo.autowiring.AutoWiringService" />
+</beans>

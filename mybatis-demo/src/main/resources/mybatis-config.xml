@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="JDBC.properties">
+		<property name="db_encoding" value="UTF8" />
+	</properties>
+	<typeAliases>
+		<typeAlias alias="person" type="edu.hfut.mybatis.domain.PersonDomain" />
+		<typeAlias alias="test" type="edu.hfut.mybatis.domain.TestDomain"/>
+	</typeAliases>
+	<typeHandlers>
+		<typeHandler handler="edu.hfut.mybatis.typehandler.DemoTypeHandler" javaType="java.lang.String"/>
+	</typeHandlers>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="mybatis-mapper.xml" />
+		<!-- <mapper class="edu.hfut.mybatis.mapper.TestMapper"/> -->
+	</mappers>
+</configuration>

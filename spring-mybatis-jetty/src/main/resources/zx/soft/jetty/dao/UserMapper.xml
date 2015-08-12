@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="zx.soft.jetty.dao.UserMapper">
+
+	<select id="list" parameterType="zx.soft.jetty.model.UserQueryCondition" resultType="zx.soft.jetty.model.User">
+		SELECT `uid`,`mid`,`name`,`nick`,`gender`,`update_time`
+		FROM `user` WHERE `uid` = #{uid}
+		<include refid="userQueryCondition" />
+	</select>
+
+	<update id="update">
+		UPDATE `user` SET `update_time` = now()
+		<if test="name != null">
+			, name = #{name}
+		</if>
+		<if test="nick != null">
+			, nick = #{nick}
+		</if>
+		<if test="gender != 0">
+			, gender = #{gender}
+		</if>
+		WHERE `uid` = #{uid} AND `mid` = #{mid}
+	</update>
+
+	<sql id="userQueryCondition">
+		<if test="name != null">
+			AND `name` LIKE #{name}
+		</if>
+		<if test="nick != null">
+			AND `nick` LIKE #{nick}
+		</if>
+		<if test="gender != null">
+			AND `gender` = #{gender}
+		</if>
+		ORDER BY user.mid DESC
+	</sql>
+
+</mapper>

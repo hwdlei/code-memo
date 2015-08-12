@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.hfut.mybatis.mapper.TestMapper">
+	<resultMap type="person" id="personMap">
+		<constructor>
+			<idArg column="id" javaType="_int"/>
+		</constructor>
+		<association property="info" javaType="edu.hfut.mybatis.domain.PersonInfo">
+			<result column="name" property="name" />
+			<result column="year" property="year" />
+		</association>
+	</resultMap>
+	<select id="selectTest" parameterType="int" resultMap="personMap">
+		select *
+		from people where id = #{id}
+	</select>
+	<insert id="insertTest" parameterType="test">
+		insert into people (id,name,year) values (#{id}, #{name}, #{year})
+	</insert>
+	<delete id="deleteTest" parameterType="int">
+		delete from people where
+		id=#{id}
+	</delete>
+</mapper>
