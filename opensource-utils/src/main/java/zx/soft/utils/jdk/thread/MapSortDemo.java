@@ -1,4 +1,4 @@
-package zx.soft.utils.common;
+package zx.soft.utils.jdk.thread;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,7 +14,7 @@ import zx.soft.utils.json.JsonUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.common.primitives.Ints;
 
-public class MainTest {
+public class MapSortDemo {
 
 	public static void main(String[] args) throws JsonProcessingException {
 		Map<String, Integer> maps = new HashMap<String, Integer>();

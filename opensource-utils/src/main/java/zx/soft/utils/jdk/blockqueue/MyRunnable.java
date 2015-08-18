@@ -1,4 +1,4 @@
-package zx.soft.utils.thread;
+package zx.soft.utils.jdk.blockqueue;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

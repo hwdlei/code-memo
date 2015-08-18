@@ -3,8 +3,6 @@ package zx.soft.utils.guava.base;
 import java.util.Collections;
 import java.util.List;
 
-import javax.annotation.Nullable;
-
 import com.google.common.base.Function;
 import com.google.common.base.MoreObjects;
 import com.google.common.collect.Lists;
@@ -13,6 +11,7 @@ import com.google.common.collect.Ordering;
 public class OrderingDemo {
 	public static void main(String[] args) {
 		Ordering<Foo> ordering = Ordering.natural().nullsFirst().onResultOf(new Function<Foo, String>() {
+			@Override
 			public String apply(Foo foo) {
 				return foo.sortedBy;
 			}
@@ -30,7 +29,6 @@ public class OrderingDemo {
 }
 
 class Foo {
-	@Nullable
 	String sortedBy;
 	int notSortedBy;
 

@@ -1,4 +1,4 @@
-package zx.soft.utils.thread;
+package zx.soft.utils.jdk.blockqueue;
 
 import java.util.Map;
 import java.util.Map.Entry;

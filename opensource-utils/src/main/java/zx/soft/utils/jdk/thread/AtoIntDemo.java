@@ -1,4 +1,4 @@
-package zx.soft.utils.common;
+package zx.soft.utils.jdk.thread;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
