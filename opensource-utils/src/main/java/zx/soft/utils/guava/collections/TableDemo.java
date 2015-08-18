@@ -1,5 +1,8 @@
 package zx.soft.utils.guava.collections;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import zx.soft.utils.json.JsonUtils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -17,6 +20,9 @@ public class TableDemo {
 		}
 
 		System.out.println(JsonUtils.getString(aTable));
+		List<String> sl = new ArrayList<>();
+		sl.add("123");
+		System.out.println(JsonUtils.getString(sl));
 	}
 
 }

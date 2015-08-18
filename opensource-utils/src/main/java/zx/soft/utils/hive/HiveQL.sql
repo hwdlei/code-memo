@@ -69,4 +69,24 @@ CREATE TABLE u_date_new (
  	FROM u_data;
  
  SELECT weekday, count(*) FROM u_date_new GROUP BY weekday;
+ 
+--  hive关联hbase表
+--  创建hbase表
+create 'test','cf'
+put 'test','row1','cf:a','123'
+put 'test','row1','cf:b','456'
+put 'test','row1','cf:c','789'
+put 'test','row2','cf:a','abc'
+put 'test','row2','cf:b','def'
+put 'test','row2','cf:c','ghi'
+scan 'test'
+
+--  创建hive外部表
+create external table hive_test (key int, cf  map<String,String>) stored by 'org.apache.hadoop.hive.hbase.HBaseStorageHandler' with serdeproperties("hbase.columns.mapping"=":key,cf:") tblproperties ("hbase.table.name" = "test");
+	
+
+
+
+
+
 	
