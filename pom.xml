@@ -15,6 +15,7 @@
 		<module>spring-demo</module>
 		<module>mybatis-demo</module>
 		<module>spring-mybatis-jetty</module>
+		<module>springboot-demo</module>
 	</modules>
 
 </project>
