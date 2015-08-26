@@ -1,0 +1,110 @@
+<html>
+<head>
+<title>ListenerTest.java</title>
+<style type="text/css"><!--
+
+.syntax-NULL {
+  color: #000000;
+}
+.syntax-COMMENT1 {
+  color: #cc0000;
+}
+.syntax-COMMENT2 {
+  color: #ff8400;
+}
+.syntax-COMMENT3 {
+  color: #6600cc;
+}
+.syntax-COMMENT4 {
+  color: #cc6600;
+}
+.syntax-DIGIT {
+  color: #ff0000;
+}
+.syntax-FUNCTION {
+  color: #9966ff;
+}
+.syntax-INVALID {
+  background: #ffffcc;
+  color: #ff0066;
+}
+.syntax-KEYWORD1 {
+  color: #006699;
+  font-weight: bold;
+}
+.syntax-KEYWORD2 {
+  color: #009966;
+  font-weight: bold;
+}
+.syntax-KEYWORD3 {
+  color: #0099ff;
+  font-weight: bold;
+}
+.syntax-KEYWORD4 {
+  color: #66ccff;
+  font-weight: bold;
+}
+.syntax-LABEL {
+  color: #02b902;
+}
+.syntax-LITERAL1 {
+  color: #ff00cc;
+}
+.syntax-LITERAL2 {
+  color: #cc00cc;
+}
+.syntax-LITERAL3 {
+  color: #9900cc;
+}
+.syntax-LITERAL4 {
+  color: #6600cc;
+}
+.syntax-MARKUP {
+  color: #0000ff;
+}
+.syntax-OPERATOR {
+  color: #000000;
+  font-weight: bold;
+}
+
+.gutter {
+  background: #dbdbdb;
+  color: #000000;
+  border-right: 2px solid black ;
+  margin-right: 5px ;
+}
+.gutterH {
+  background: #dbdbdb;
+  color: #666699;
+  border-right: 2px solid black ; 
+  margin-right: 5px ;
+}
+
+--></style>
+</head>
+<body bgcolor="#ffffff">
+<pre><span class="syntax0"><span class="gutter">13 </span><span class="syntax-KEYWORD2">public</span> <span class="syntax-KEYWORD3">class</span> ListenerTest <span class="syntax-OPERATOR">{</span>
+<span class="gutter">14 </span>  <span class="syntax-KEYWORD2">public</span> <span class="syntax-KEYWORD2">static</span> <span class="syntax-KEYWORD3">void</span> <span class="syntax-FUNCTION">main</span><span class="syntax-OPERATOR">(</span>String[] args<span class="syntax-OPERATOR">)</span> <span class="syntax-OPERATOR">{</span>
+<span class="gutterH">15 </span>        
+<span class="gutter">16 </span>    JButton testButton <span class="syntax-OPERATOR">=</span> <span class="syntax-KEYWORD1">new</span> <span class="syntax-FUNCTION">JButton</span><span class="syntax-OPERATOR">(</span><span class="syntax-LITERAL1">&quot;</span><span class="syntax-LITERAL1">Test</span><span class="syntax-LITERAL1"> </span><span class="syntax-LITERAL1">Button</span><span class="syntax-LITERAL1">&quot;</span><span class="syntax-OPERATOR">)</span>;
+<span class="gutter">17 </span>    testButton.<span class="syntax-FUNCTION">addActionListener</span><span class="syntax-OPERATOR">(</span><span class="syntax-KEYWORD1">new</span> <span class="syntax-FUNCTION">ActionListener</span><span class="syntax-OPERATOR">(</span><span class="syntax-OPERATOR">)</span><span class="syntax-OPERATOR">{</span>
+<span class="gutter">18 </span>    <span class="syntax-KEYWORD4">@</span><span class="syntax-KEYWORD4">Override</span> <span class="syntax-KEYWORD2">public</span> <span class="syntax-KEYWORD3">void</span> <span class="syntax-FUNCTION">actionPerformed</span><span class="syntax-OPERATOR">(</span>ActionEvent ae<span class="syntax-OPERATOR">)</span><span class="syntax-OPERATOR">{</span>
+<span class="gutter">19 </span>        System.out.<span class="syntax-FUNCTION">println</span><span class="syntax-OPERATOR">(</span><span class="syntax-LITERAL1">&quot;</span><span class="syntax-LITERAL1">Click</span><span class="syntax-LITERAL1"> </span><span class="syntax-LITERAL1">Detected</span><span class="syntax-LITERAL1"> </span><span class="syntax-LITERAL1">by</span><span class="syntax-LITERAL1"> </span><span class="syntax-LITERAL1">Anon</span><span class="syntax-LITERAL1"> </span><span class="syntax-LITERAL1">Class</span><span class="syntax-LITERAL1">&quot;</span><span class="syntax-OPERATOR">)</span>;
+<span class="gutterH">20 </span>      <span class="syntax-OPERATOR">}</span>
+<span class="gutter">21 </span>    <span class="syntax-OPERATOR">}</span><span class="syntax-OPERATOR">)</span>;
+<span class="gutter">22 </span>    
+<span class="gutter">23 </span>    testButton.<span class="syntax-FUNCTION">addActionListener</span><span class="syntax-OPERATOR">(</span>e <span class="syntax-OPERATOR">-</span><span class="syntax-OPERATOR">&gt;</span> System.out.<span class="syntax-FUNCTION">println</span><span class="syntax-OPERATOR">(</span><span class="syntax-LITERAL1">&quot;</span><span class="syntax-LITERAL1">Click</span><span class="syntax-LITERAL1"> </span><span class="syntax-LITERAL1">Detected</span><span class="syntax-LITERAL1"> </span><span class="syntax-LITERAL1">by</span><span class="syntax-LITERAL1"> </span><span class="syntax-LITERAL1">Lambda</span><span class="syntax-LITERAL1"> </span><span class="syntax-LITERAL1">Listner</span><span class="syntax-LITERAL1">&quot;</span><span class="syntax-OPERATOR">)</span><span class="syntax-OPERATOR">)</span>;
+<span class="gutter">24 </span>    
+<span class="gutterH">25 </span>    <span class="syntax-COMMENT2">//</span><span class="syntax-COMMENT2"> </span><span class="syntax-COMMENT2">Swing</span><span class="syntax-COMMENT2"> </span><span class="syntax-COMMENT2">stuff</span>
+<span class="gutter">26 </span>    JFrame frame <span class="syntax-OPERATOR">=</span> <span class="syntax-KEYWORD1">new</span> <span class="syntax-FUNCTION">JFrame</span><span class="syntax-OPERATOR">(</span><span class="syntax-LITERAL1">&quot;</span><span class="syntax-LITERAL1">Listener</span><span class="syntax-LITERAL1"> </span><span class="syntax-LITERAL1">Test</span><span class="syntax-LITERAL1">&quot;</span><span class="syntax-OPERATOR">)</span>;
+<span class="gutter">27 </span>    frame.<span class="syntax-FUNCTION">setDefaultCloseOperation</span><span class="syntax-OPERATOR">(</span>JFrame.EXIT_ON_CLOSE<span class="syntax-OPERATOR">)</span>;
+<span class="gutter">28 </span>    frame.<span class="syntax-FUNCTION">add</span><span class="syntax-OPERATOR">(</span>testButton, BorderLayout.CENTER<span class="syntax-OPERATOR">)</span>;
+<span class="gutter">29 </span>    frame.<span class="syntax-FUNCTION">pack</span><span class="syntax-OPERATOR">(</span><span class="syntax-OPERATOR">)</span>;
+<span class="gutterH">30 </span>    frame.<span class="syntax-FUNCTION">setVisible</span><span class="syntax-OPERATOR">(</span><span class="syntax-LITERAL2">true</span><span class="syntax-OPERATOR">)</span>;
+<span class="gutter">31 </span>    
+<span class="gutter">32 </span>  <span class="syntax-OPERATOR">}</span>
+<span class="gutter">33 </span><span class="syntax-OPERATOR">}</span>
+</span></pre>
+</body>
+</html>
+
