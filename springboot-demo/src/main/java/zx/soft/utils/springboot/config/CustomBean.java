@@ -1,4 +1,4 @@
-package zx.soft.utils.springboot.bean;
+package zx.soft.utils.springboot.config;
 
 import java.text.SimpleDateFormat;
 import java.util.Locale;

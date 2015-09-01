@@ -34,6 +34,6 @@ public class GreetingController {
 
 	@RequestMapping("/")
 	public String home() {
-		return customService.home();
+		return customService.home() + " " + customService.hashCode();
 	}
 }
