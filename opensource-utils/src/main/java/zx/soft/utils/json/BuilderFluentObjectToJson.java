@@ -1,10 +1,18 @@
 package zx.soft.utils.json;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.MoreObjects;
 
 public class BuilderFluentObjectToJson {
 	private String name;
 	private int age;
+
+	@JsonCreator
+	private BuilderFluentObjectToJson(@JsonProperty("name") String name, @JsonProperty("age") int age) {
+		this.name = name;
+		this.age = age;
+	}
 
 	@Override
 	public String toString() {

@@ -164,6 +164,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
+			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 	<!-- 依赖包仓库 -->
