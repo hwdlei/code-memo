@@ -24,6 +24,7 @@
 > google guaua 使用示例，hbase访问接口以及hbase操作Hadoop示例、hive jdbc连接、jdk中lambda表达式使用、fluent api使用、自定义注解、fasterxml.jackson使用、slf4j使用、rxjava使用等
 
 作者：@[hwdlei](https://github.com/hwdlei)
+
 QQ: 1368182238
 
 
