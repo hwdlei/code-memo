@@ -8,6 +8,8 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>mybatis-demo</artifactId>
+	<name>Mybatis Demo</name>
+	<description>A project to show the common usage of mybatis</description>
 	<properties>
 		<mybatis.version>3.2.3</mybatis.version>
 	</properties>

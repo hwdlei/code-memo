@@ -5,6 +5,8 @@
 		<version>1.0.0</version> </parent> -->
 	<groupId>edu.hfut</groupId>
 	<artifactId>springboot-demo</artifactId>
+	<name>Springboot Demo</name>
+	<description>A project to show the common usage of Springboot</description>
 	<version>1.0.0</version>
 	<!-- Changing the Java version -->
 	<properties>

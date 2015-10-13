@@ -2,8 +2,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>spring-demo</artifactId>
-	<name>Spring-Demo</name>
-	<description>This is a Spring Demo project.</description>
+	<name>Spring Demo</name>
+	<description>A project to show the common usage of mybatis</description>
 	<parent>
 		<groupId>edu.hfut</groupId>
 		<artifactId>code-memo</artifactId>

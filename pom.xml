@@ -5,6 +5,10 @@
 	<artifactId>code-memo</artifactId>
 	<version>1.0.0</version>
 	<packaging>pom</packaging>
+	<url>https://github.com/hwdlei/code-memo</url>
+	<name>Code Memo</name>
+	<description>平时学习的开源框架的示例代码。包括mybatis、spring、spring-boot、hbase、hive、impala、guava、jdk等</description>
+	
 	<parent>
 		<groupId>zx.soft</groupId>
 		<artifactId>common-parent</artifactId>
@@ -16,6 +20,51 @@
 		<module>mybatis-demo</module>
 		<module>spring-mybatis-jetty</module>
 		<module>springboot-demo</module>
+		<module>netty-demo</module>
 	</modules>
+	
+	<build>
+		<plugins>
+			<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-site-plugin</artifactId>
+			<version>3.4</version>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.10.3</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<aggregate>true</aggregate>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
+	
+	<developers>
+		<developer>
+			<id>hwdlei</id>
+			<name>hwdlei</name>
+			<email>d21958@yeah.net</email>
+			<url>https://github.com/hwdlei</url>
+		</developer>
+	</developers>
+	
+	<licenses>
+		<license>
+			<name>Apache Licence,Version2.0</name>
+			<url>http://www.apache.org/licenes/LICENSE-2.0</url>
+		</license>
+	</licenses>
 
 </project>
