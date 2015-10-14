@@ -153,95 +153,31 @@
 			</plugins>
 		</pluginManagement>
 		<plugins>
-<!-- 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>sql-maven-plugin</artifactId>
-				<dependencies>
-					指定依赖的JDBC驱动
-					<dependency>
-						<groupId>mysql</groupId>
-						<artifactId>mysql-connector-java</artifactId>
-						<version>5.1.25</version>
-					</dependency>
-				</dependencies>
-				所有execution的共同配置
-				<configuration>
-					<driver>com.mysql.jdbc.Driver</driver>
-					<url>jdbc:mysql://127.0.0.1:3306?characterEncoding=utf-8</url>
-					<username>integration</username>
-					<password></password>
-					<encoding>UTF-8</encoding>
-					如果执行-Dmaven.test.skip=true，所有的executions都被忽略
-					<skip>${maven.test.skip}</skip>
-				</configuration>
-				<executions>
-					测试前清空数据库
-					<execution>
-						<id>drop-db-before-test-if-any</id>
-						<phase>process-test-resources</phase>
-						<goals>
-							<goal>execute</goal>
-						</goals>
-						<configuration>
-							<autocommit>true</autocommit>
-							<sqlCommand>DROP DATABASE IF EXISTS `user_dev`</sqlCommand>
-							ignore error when database is not avaiable
-							<onError>continue</onError>
-						</configuration>
-					</execution>
-					创建数据库
-					<execution>
-						<id>create-db</id>
-						<phase>process-test-resources</phase>
-						<goals>
-							<goal>execute</goal>
-						</goals>
-						<configuration>
-							<autocommit>true</autocommit>
-							<srcFiles>
-								<srcFile>src/test/sql/user_db.sql</srcFile>
-							</srcFiles>
-						</configuration>
-					</execution>
-					创建数据表
-					<execution>
-						<id>create-schema</id>
-						<phase>process-test-resources</phase>
-						<goals>
-							<goal>execute</goal>
-						</goals>
-						<configuration>
-							<autocommit>true</autocommit>
-							<srcFiles>
-								<srcFile>src/test/sql/user_schema.sql</srcFile>
-							</srcFiles>
-						</configuration>
-					</execution>
-					创建数据
-					<execution>
-						<id>create-data</id>
-						<phase>process-test-resources</phase>
-						<goals>
-							<goal>execute</goal>
-						</goals>
-						<configuration>
-							<orderFile>ascending</orderFile>
-							<fileset>
-								<basedir>${basedir}</basedir>
-								<includes>
-									<include>src/test/sql/test_data2.sql</include>
-									<include>src/test/sql/test_data1.sql</include>
-								</includes>
-							</fileset>
-						</configuration>
-					</execution>
-					测试结束清空数据库
-					<execution> <id>drop-db-after-test</id> <phase>process-test-resources</phase> 
-						<goals> <goal>execute</goal> </goals> <configuration> <autocommit>true</autocommit> 
-						<sqlCommand>DROP DATABASE IF EXISTS `user_dev`</sqlCommand> </configuration> 
-						</execution>
-				</executions>
-			</plugin> -->
+			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>sql-maven-plugin</artifactId> 
+				<dependencies> 指定依赖的JDBC驱动 <dependency> <groupId>mysql</groupId> <artifactId>mysql-connector-java</artifactId> 
+				<version>5.1.25</version> </dependency> </dependencies> 所有execution的共同配置 
+				<configuration> <driver>com.mysql.jdbc.Driver</driver> <url>jdbc:mysql://127.0.0.1:3306?characterEncoding=utf-8</url> 
+				<username>integration</username> <password></password> <encoding>UTF-8</encoding> 
+				如果执行-Dmaven.test.skip=true，所有的executions都被忽略 <skip>${maven.test.skip}</skip> 
+				</configuration> <executions> 测试前清空数据库 <execution> <id>drop-db-before-test-if-any</id> 
+				<phase>process-test-resources</phase> <goals> <goal>execute</goal> </goals> 
+				<configuration> <autocommit>true</autocommit> <sqlCommand>DROP DATABASE IF 
+				EXISTS `user_dev`</sqlCommand> ignore error when database is not avaiable 
+				<onError>continue</onError> </configuration> </execution> 创建数据库 <execution> 
+				<id>create-db</id> <phase>process-test-resources</phase> <goals> <goal>execute</goal> 
+				</goals> <configuration> <autocommit>true</autocommit> <srcFiles> <srcFile>src/test/sql/user_db.sql</srcFile> 
+				</srcFiles> </configuration> </execution> 创建数据表 <execution> <id>create-schema</id> 
+				<phase>process-test-resources</phase> <goals> <goal>execute</goal> </goals> 
+				<configuration> <autocommit>true</autocommit> <srcFiles> <srcFile>src/test/sql/user_schema.sql</srcFile> 
+				</srcFiles> </configuration> </execution> 创建数据 <execution> <id>create-data</id> 
+				<phase>process-test-resources</phase> <goals> <goal>execute</goal> </goals> 
+				<configuration> <orderFile>ascending</orderFile> <fileset> <basedir>${basedir}</basedir> 
+				<includes> <include>src/test/sql/test_data2.sql</include> <include>src/test/sql/test_data1.sql</include> 
+				</includes> </fileset> </configuration> </execution> 测试结束清空数据库 <execution> 
+				<id>drop-db-after-test</id> <phase>process-test-resources</phase> <goals> 
+				<goal>execute</goal> </goals> <configuration> <autocommit>true</autocommit> 
+				<sqlCommand>DROP DATABASE IF EXISTS `user_dev`</sqlCommand> </configuration> 
+				</execution> </executions> </plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
@@ -284,5 +220,13 @@
 		<finalName>${project.artifactId}-${project.version}</finalName>
 
 	</build>
+
+	<repositories>
+		<repository>
+			<id>zxsoft-public</id>
+			<name>Nexus Release Repository</name>
+			<url>http://192.168.3.23:18081/nexus/content/groups/public/</url>
+		</repository>
+	</repositories>
 
 </project>

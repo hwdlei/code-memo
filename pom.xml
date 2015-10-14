@@ -21,6 +21,7 @@
 		<module>spring-mybatis-jetty</module>
 		<module>springboot-demo</module>
 		<module>netty-demo</module>
+		<module>kafka-demo</module>
 	</modules>
 	
 	<build>
