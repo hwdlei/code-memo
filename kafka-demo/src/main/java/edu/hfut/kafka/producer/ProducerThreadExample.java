@@ -1,20 +1,22 @@
 package edu.hfut.kafka.producer;
+
 import java.util.Properties;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
-import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import edu.hfut.kafka.utils.CheckSumUtils;
-
-public class ProducerExample {
-	private static Logger logger = LoggerFactory.getLogger(ProducerExample.class);
+public class ProducerThreadExample {
+	private static Logger logger = LoggerFactory.getLogger(ProducerThreadExample.class);
 
 	public static void main(String args[]) throws InterruptedException, ExecutionException {
+		int numOfThread = 10;
 		Properties props = new Properties();
 		props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.5.201:9092,192.168.3.10:9092,192.168.3.11:9092");
 
@@ -31,20 +33,16 @@ public class ProducerExample {
 		long start = System.currentTimeMillis();
 		boolean sync = false;
 		String topic = "sentiment-cache";
-		int i = 100000;
-		for (; i < 200000; i++) {
-			if (i % 100 == 0) {
-				logger.info("i = " + i);
-			}
-			ProducerRecord<String, String> producerRecord = new ProducerRecord<String, String>(topic,
-					CheckSumUtils.getMD5(i + ""));
-			if (sync) {
-				producer.send(producerRecord).get();
-			} else {
-				producer.send(producerRecord);
-			}
+
+		ExecutorService executor = Executors.newFixedThreadPool(numOfThread);
+		CountDownLatch latch = new CountDownLatch(numOfThread);
+		int gap = 1000000;
+		for (int i = 0; i < 10; i++) {
+			executor.submit(new ProducerRunnable(producer, topic, sync, i * gap, gap, latch));
 		}
+		latch.await();
+		executor.shutdown();
 		producer.close();
-		logger.info("Push " + i + " 　条数据,耗时为" + (System.currentTimeMillis() - start));
+		logger.info("Push " + (10 * gap) + " 　条数据,耗时为" + (System.currentTimeMillis() - start));
 	}
 }
