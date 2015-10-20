@@ -22,6 +22,7 @@
 		<module>springboot-demo</module>
 		<module>netty-demo</module>
 		<module>kafka-demo</module>
+		<module>de-serilize</module>
 	</modules>
 	
 	<build>
