@@ -30,7 +30,7 @@ public class ProducerExample {
 		KafkaProducer<String, String> producer = new KafkaProducer<String, String>(props);
 		long start = System.currentTimeMillis();
 		boolean sync = false;
-		String topic = "sentiment-cache";
+		String topic = "test";
 		int i = 100000;
 		for (; i < 200000; i++) {
 			if (i % 100 == 0) {

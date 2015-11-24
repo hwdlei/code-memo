@@ -23,6 +23,9 @@
 		<module>netty-demo</module>
 		<module>kafka-demo</module>
 		<module>de-serilize</module>
+		<module>hbase-demo</module>
+		<module>spark-demo</module>
+		<module>dbcp-demo</module>
 	</modules>
 	
 	<build>

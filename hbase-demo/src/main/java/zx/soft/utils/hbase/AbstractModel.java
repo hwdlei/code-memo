@@ -1,5 +1,9 @@
 package zx.soft.utils.hbase;
 
+import java.util.Arrays;
+
+import org.apache.hadoop.hbase.util.Bytes;
+
 import com.google.common.base.Objects;
 
 public class AbstractModel {
@@ -53,6 +57,12 @@ public class AbstractModel {
 
 	public void setFamily(String family) {
 		this.family = family;
+	}
+
+	public static void main(String[] args) {
+		long m = 123L;
+		System.out.println(Arrays.toString(Bytes.toBytes(m)));
+		System.out.println(Arrays.toString(Bytes.toBytes(-m)));
 	}
 
 }

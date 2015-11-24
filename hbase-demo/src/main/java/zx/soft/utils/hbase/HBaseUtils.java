@@ -39,8 +39,8 @@ public class HBaseUtils {
 
 	static {
 		conf = HBaseConfiguration.create();
-		conf.set("hbase.zookeeper.quorum", "localhost");
-		conf.setInt("hbase.zookeeper.property.clientPort", 2181);
+		conf.set("hbase.zookeeper.quorum", "archtorm,Company,chl");
+		conf.setInt("hbase.zookeeper.property.clientPort", 2124);
 		try {
 			conn = HConnectionManager.createConnection(conf);
 		} catch (IOException e) {

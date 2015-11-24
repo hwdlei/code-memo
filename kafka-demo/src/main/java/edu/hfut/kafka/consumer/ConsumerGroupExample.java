@@ -50,6 +50,7 @@ public class ConsumerGroupExample {
 		topicCountMap.put(topic, new Integer(a_numThreads));
 		Map<String, List<KafkaStream<byte[], byte[]>>> consumerMap = consumer.createMessageStreams(topicCountMap);
 		List<KafkaStream<byte[], byte[]>> streams = consumerMap.get(topic);
+		System.out.println(streams.size());
 
 		// now launch all the threads
 		//
@@ -68,7 +69,7 @@ public class ConsumerGroupExample {
 		Properties props = new Properties();
 		props.put("zookeeper.connect", a_zookeeper);
 		props.put("group.id", a_groupId);
-		props.put("zookeeper.session.timeout.ms", "1000");
+		props.put("zookeeper.session.timeout.ms", "60000");
 		props.put("zookeeper.sync.time.ms", "2000");
 		props.put("auto.commit.interval.ms", "1000");
 
@@ -78,8 +79,8 @@ public class ConsumerGroupExample {
 	public static void main(String[] args) {
 		String zooKeeper = "192.168.5.201:2124,192.168.3.10:2124,192.168.3.11:2124";
 		String groupId = "sentiment";
-		String topic = "sentiment-cache";
-		int threads = Integer.parseInt("10");
+		String topic = "test";
+		int threads = Integer.parseInt("1");
 
 		ConsumerGroupExample example = new ConsumerGroupExample(zooKeeper, groupId, topic);
 		example.run(threads);
