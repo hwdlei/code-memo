@@ -26,6 +26,8 @@
 		<module>hbase-demo</module>
 		<module>spark-demo</module>
 		<module>dbcp-demo</module>
+		<module>avro-demo</module>
+		<module>pool2-demo</module>
 	</modules>
 	
 	<build>

@@ -41,6 +41,12 @@ public class ObjectDemo {
 		System.out.println(student2.compareTo(student1));
 		System.out.println(student2.compareTo(student));
 
+
+		Student students = new Student("peida", 23, 80);
+		Student students2 = new Student("peida", 23, 80);
+		System.out.println(Objects.hashCode(students));
+		System.out.println(Objects.hashCode(students2));
+
 	}
 
 }
@@ -58,32 +64,34 @@ class Student implements Comparable<Student> {
 
 	@Override
 	public int hashCode() {
-		return Objects.hashCode(name, age);
+		return Objects.hashCode(this.name, this.age);
 	}
 
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof Student) {
 			Student that = (Student) obj;
-			return Objects.equal(name, that.name) && Objects.equal(age, that.age) && Objects.equal(score, that.score);
+			return Objects.equal(this.name, that.name) && Objects.equal(this.age, that.age) && Objects.equal(this.score, that.score);
 		}
 		return false;
 	}
 
 	@Override
 	public String toString() {
-		return Objects.toStringHelper(this).addValue(name).addValue(age).addValue(score).toString();
+		return Objects.toStringHelper(this).addValue(this.name).addValue(this.age).addValue(this.score).toString();
 	}
 
+	@Override
 	public int compareTo(Student other) {
-		return ComparisonChain.start().compare(name, other.name).compare(age, other.age)
-				.compare(score, other.score, Ordering.natural().nullsLast()).result();
+		return ComparisonChain.start().compare(this.name, other.name).compare(this.age, other.age)
+				.compare(this.score, other.score, Ordering.natural().nullsLast()).result();
 	}
 }
 
 
 
 class StudentComparator implements Comparator<Student> {
+	@Override
 	public int compare(Student s1, Student s2) {
 		return ComparisonChain.start().compare(s1.name, s2.name).compare(s1.age, s2.age).compare(s1.score, s2.score)
 				.result();

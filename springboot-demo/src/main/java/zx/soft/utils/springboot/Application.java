@@ -45,7 +45,11 @@ public class Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		dao.deleteAll();
+		//		dao.deleteAll();
+		User u = new User("d21958@yeah", new Name("hwdlei", "123123"), new Date());
+		u.setId(100);
+		dao.saveAndFlush(u);
+
 		Calendar cal = Calendar.getInstance();
 		dao.save(new User("d21958@yeah.net", new Name("hwdlei", ""), new Date()));
 		cal.set(2015, 8, 31, 23, 58);
