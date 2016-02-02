@@ -6,8 +6,54 @@
 		<artifactId>code-memo</artifactId>
 		<version>1.0.0</version>
 	</parent>
-	<artifactId>avro-demo</artifactId>
+	<artifactId>parquet-demo</artifactId>
+
+	<properties>
+		<parquet.version>1.8.1</parquet.version>
+		<cdh.hadoop.version>2.6.0-cdh5.4.9</cdh.hadoop.version>
+	</properties>
+
 	<dependencies>
+		<dependency>
+			<groupId>com.google.protobuf</groupId>
+			<artifactId>protobuf-java</artifactId>
+			<version>2.6.1</version>
+		</dependency>
+		<!-- parquet -->
+		<dependency>
+			<groupId>org.apache.parquet</groupId>
+			<artifactId>parquet-common</artifactId>
+			<version>${parquet.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.parquet</groupId>
+			<artifactId>parquet-encoding</artifactId>
+			<version>${parquet.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.parquet</groupId>
+			<artifactId>parquet-column</artifactId>
+			<version>${parquet.version}</version>
+		</dependency>
+<!-- 		<dependency>
+			<groupId>org.apache.parquet</groupId>
+			<artifactId>parquet-hadoop</artifactId>
+			<version>${parquet.version}</version>
+		</dependency> -->
+		<dependency>
+			<groupId>org.apache.parquet</groupId>
+			<artifactId>parquet-avro</artifactId>
+			<version>${parquet.version}</version>
+		</dependency>
+
+		<!-- hadoop -->
+		<dependency>
+			<groupId>org.apache.hadoop</groupId>
+			<artifactId>hadoop-client</artifactId>
+			<version>${cdh.hadoop.version}</version>
+		</dependency>
+
+		<!-- avro -->
 		<dependency>
 			<groupId>org.apache.avro</groupId>
 			<artifactId>avro</artifactId>
@@ -30,8 +76,8 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 		</dependency>
-
 	</dependencies>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -62,4 +108,16 @@
 		</plugins>
 
 	</build>
+	<!-- 指定公司私有Maven仓库地址，以便下载该jar包 -->
+	<repositories>
+		<repository>
+			<id>cloudera</id>
+			<url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
+		</repository>
+		<repository>
+			<id>zxsoft-public</id>
+			<name>Nexus Release Repository</name>
+			<url>http://192.168.3.23:18081/nexus/content/groups/public/</url>
+		</repository>
+	</repositories>
 </project>

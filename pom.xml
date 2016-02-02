@@ -28,6 +28,7 @@
 		<module>dbcp-demo</module>
 		<module>avro-demo</module>
 		<module>pool2-demo</module>
+		<module>parquet-demo</module>
 	</modules>
 	
 	<build>
