@@ -29,6 +29,7 @@
 		<module>avro-demo</module>
 		<module>pool2-demo</module>
 		<module>parquet-demo</module>
+		<module>redis-demo</module>
 	</modules>
 	
 	<build>
