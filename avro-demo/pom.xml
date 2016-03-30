@@ -8,11 +8,13 @@
 	</parent>
 	<artifactId>avro-demo</artifactId>
 	<dependencies>
+		<!-- Avro依赖 -->
 		<dependency>
 			<groupId>org.apache.avro</groupId>
 			<artifactId>avro</artifactId>
 			<version>1.7.7</version>
 		</dependency>
+
 		<!-- Json组件 -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -26,6 +28,8 @@
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-annotations</artifactId>
 		</dependency>
+
+		<!-- 测试 -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

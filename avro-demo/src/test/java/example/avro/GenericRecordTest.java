@@ -19,6 +19,7 @@ public class GenericRecordTest {
 	@Test
 	public void testGenericRecord() throws IOException {
 		Schema schema = new Schema.Parser().parse(new File("src/test/resources/user.avsc"));
+
 		GenericRecord user1 = new GenericData.Record(schema);
 		user1.put("name", "Alyssa");
 		user1.put("favorite_number", 256);
