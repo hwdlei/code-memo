@@ -32,6 +32,7 @@
 		<module>redis-demo</module>
 		<module>powermock-demo</module>
 		<module>jodatime-demo</module>
+		<module>asynchttpclient-demo</module>
 	</modules>
 	
 	<build>
