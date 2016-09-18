@@ -33,6 +33,7 @@
 		<module>powermock-demo</module>
 		<module>jodatime-demo</module>
 		<module>asynchttpclient-demo</module>
+		<module>asynchbase-demo</module>
 	</modules>
 	
 	<build>

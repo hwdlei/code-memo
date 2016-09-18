@@ -101,11 +101,11 @@ public class AsyncHttpClientSingleton {
 	 * @throws TimeoutException
 	 */
 	public String post(String url, HttpHeaders headers, String data) throws InterruptedException, ExecutionException,
-			TimeoutException {
+	TimeoutException {
 		RequestBuilder builder = new RequestBuilder("POST");
 		builder.setUrl(url);
 		builder.setHeaders(headers);
-		builder.setBody(data);
+		builder.setBody(new String(data.getBytes(), Charset.forName("UTF-8")));
 		Future<String> re = this.asyncHttpClient.executeRequest(builder.build(), new AsyncCompletionHandler<String>() {
 
 			@Override
