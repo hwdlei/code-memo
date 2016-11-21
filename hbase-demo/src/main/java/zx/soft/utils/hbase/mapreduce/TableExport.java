@@ -30,7 +30,7 @@ public class TableExport {
 			Model model = new Model();
 			byte[] ts = value.getValue(Model.T, Model.TS);
 			if (ts != null) {
-				model.setTimestamp(Bytes.toLong(ts));
+				model.setTimestamp(Bytes.toString(ts));
 			}
 			byte[] srcIp = value.getValue(Model.T, Model.SRCIP);
 			if (srcIp != null) {
@@ -42,11 +42,11 @@ public class TableExport {
 			}
 			byte[] srcPort = value.getValue(Model.T, Model.SRCPORT);
 			if (srcPort != null) {
-				model.setSrcPort(Bytes.toInt(srcPort));
+				model.setSrcPort(Bytes.toString(srcPort));
 			}
 			byte[] desPort = value.getValue(Model.T, Model.DESPORT);
 			if (desPort != null) {
-				model.setDesPort(Bytes.toInt(desPort));
+				model.setDesPort(Bytes.toString(desPort));
 			}
 			byte[] protocol = value.getValue(Model.T, Model.PROTOCOL);
 			if (protocol != null) {
@@ -60,7 +60,9 @@ public class TableExport {
 			if (detail != null) {
 				model.setDetail(Bytes.toString(detail));
 			}
-			context.write(new Text(model.toString()), NullWritable.get());
+			if (!model.toString().isEmpty()) {
+				context.write(new Text(model.toString()), NullWritable.get());
+			}
 		}
 	}
 
@@ -86,6 +88,8 @@ public class TableExport {
 
 		job.setInputFormatClass(TableInputFormat.class);
 		job.setOutputFormatClass(TextOutputFormat.class);
+
+		job.setNumReduceTasks(0);
 
 		FileOutputFormat.setOutputPath(job, new Path(otherArgs[0]));
 		System.exit(job.waitForCompletion(true) ? 0 : 1);

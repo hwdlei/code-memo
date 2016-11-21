@@ -25,20 +25,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-
 public class JsonUtils {
+
 	/* Object mapper for serializing and deserializing JSON strings. */
 	public static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
-
 
 	public static void main(String[] args) throws JsonGenerationException, JsonMappingException, IOException {
 		User u = createUser();
 		//		System.out.println(new String(u.getUserImage()));
 		System.out.println(getString(u));
-		User uT = getObject(
-				"{\"gender\":\"MALE\",\"name\":{\"first\":\"Joe\"},\"userImage\":\"Um05dlltRnlJUT09\",\"verified\":false}",
-				User.class);
-		System.out.println(uT);
+		//		User uT = getObject(
+		//				"{\"gender\":\"MALE\",\"name\":{\"first\":\"Joe\"},\"userImage\":\"Um05dlltRnlJUT09\",\"verified\":false}",
+		//				User.class);
+		//		System.out.println(uT);
 		//		System.out.println(new String(uT.getUserImage()));
 		//		Map<String, Object> userData = OBJECT_MAPPER.readValue(getString(u), Map.class);
 		//		User test = new User();
@@ -51,15 +50,16 @@ public class JsonUtils {
 		//
 		//		streamApi();
 		//
-		//		parseStreamApi(getString(u));
+		parseStreamApi(getString(u));
 		//
-		//		String json = "[{\"foo\": \"bar\"},{\"foo\": \"biz\"}]";
-		//		parse(json);
+		String json = "[{\"foo\": \"bar\"},{\"foo\": \"biz\"}]";
+		parse(json);
 		//		jsonTest();
 
 	}
 
 	public static class Foo {
+
 		private String foo;
 
 		public String getFoo() {
@@ -74,18 +74,17 @@ public class JsonUtils {
 
 	public static void parse(String json) throws JsonParseException, JsonMappingException, IOException {
 		JsonFactory f = new JsonFactory();
-		  JsonParser jp = f.createParser(json);
-		  // advance stream to START_ARRAY first:
-		  jp.nextToken();
-		  // and then each time, advance to opening START_OBJECT
+		JsonParser jp = f.createParser(json);
+		// advance stream to START_ARRAY first:
+		jp.nextToken();
+		// and then each time, advance to opening START_OBJECT
 		while (jp.nextToken() == JsonToken.START_OBJECT) {
-		    Foo foobar = OBJECT_MAPPER.readValue(jp, Foo.class);
+			Foo foobar = OBJECT_MAPPER.readValue(jp, Foo.class);
 			foobar.getFoo();
-		    // process
-		    // after binding, stream points to closing END_OBJECT
-		  }
+			// process
+			// after binding, stream points to closing END_OBJECT
+		}
 	}
-
 
 	public static void streamApi() throws IOException {
 		JsonFactory f = new JsonFactory();

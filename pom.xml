@@ -34,6 +34,7 @@
 		<module>jodatime-demo</module>
 		<module>asynchttpclient-demo</module>
 		<module>asynchbase-demo</module>
+		<module>elasticsearch-demo</module>
 	</modules>
 	
 	<build>

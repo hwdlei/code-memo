@@ -16,30 +16,29 @@ public class Model {
 	public static final byte[] BRIEF = Bytes.toBytes("bf");
 	public static final byte[] DETAIL = Bytes.toBytes("dtl");
 
-	private long timestamp;
+	private String timestamp;
 	private String srcIp;
 	private String desIp;
-	private int srcPort;
-	private int desPort;
+	private String srcPort;
+	private String desPort;
 	private String protocol;
 	private String brief;
 	private String detail;
 
 	@Override
 	public String toString() {
-		if (timestamp == 0 || srcIp == null || desIp == null || protocol == null) {
+		if (timestamp == null || srcIp == null || desIp == null || protocol == null) {
 			return "";
 		} else {
-			return timestamp + "\t" + srcIp + "\t" + desIp + "\t" + srcPort + "\t" + desPort + "\t" + protocol + "\t"
-					+ brief + "\t" + detail;
+			return timestamp + "\t" + srcIp + "\t" + desIp + "\t" + srcPort + "\t" + desPort + "\t" + protocol;
 		}
 	}
 
-	public long getTimestamp() {
+	public String getTimestamp() {
 		return timestamp;
 	}
 
-	public void setTimestamp(long timestamp) {
+	public void setTimestamp(String timestamp) {
 		this.timestamp = timestamp;
 	}
 
@@ -59,19 +58,19 @@ public class Model {
 		this.desIp = desIp;
 	}
 
-	public int getSrcPort() {
+	public String getSrcPort() {
 		return srcPort;
 	}
 
-	public void setSrcPort(int srcPort) {
+	public void setSrcPort(String srcPort) {
 		this.srcPort = srcPort;
 	}
 
-	public int getDesPort() {
+	public String getDesPort() {
 		return desPort;
 	}
 
-	public void setDesPort(int desPort) {
+	public void setDesPort(String desPort) {
 		this.desPort = desPort;
 	}
 
