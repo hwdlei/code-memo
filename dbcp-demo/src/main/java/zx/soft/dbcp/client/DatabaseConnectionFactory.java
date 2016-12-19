@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import zx.soft.utils.config.ConfigUtil;
-import zx.soft.utils.log.LogbackUtil;
+import zx.soft.utils.log.ExceptionHelper;
 
 /**
  * 数据库连接工厂类
@@ -73,7 +73,7 @@ public class DatabaseConnectionFactory {
 		try {
 			return dataSource.getConnection();
 		} catch (SQLException e) {
-			logger.error("Exception:{}", LogbackUtil.expection2Str(e));
+			logger.error("Exception:{}", ExceptionHelper.stackTrace(e));
 			throw new RuntimeException(e);
 		}
 	}
@@ -85,7 +85,7 @@ public class DatabaseConnectionFactory {
 		try {
 			dataSource.close();
 		} catch (SQLException e) {
-			logger.error("Exception:{}", LogbackUtil.expection2Str(e));
+			logger.error("Exception:{}", ExceptionHelper.stackTrace(e));
 			logger.info("Db close error.");
 		}
 	}

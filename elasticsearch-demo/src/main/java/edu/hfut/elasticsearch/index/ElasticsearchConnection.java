@@ -44,7 +44,7 @@ public class ElasticsearchConnection {
 
 	public void start() throws Exception {
 		logger.info("Starting Elasticsearch Client");
-		Settings settings = Settings.settingsBuilder()
+		Settings settings = Settings.settingsBuilder().put("client.transport.sniff", true)
 				.put("cluster.name", ElasticsearchConfig.getProps("cluster.name", "elasticsearch")).build();
 
 		TransportClient esClient = TransportClient.builder().settings(settings).build();

@@ -11,7 +11,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import zx.soft.utils.log.LogbackUtil;
+import zx.soft.utils.log.ExceptionHelper;
 
 /**
  * 数据库操作接口
@@ -44,12 +44,12 @@ public class DatabaseUtils {
 					}
 					ts.add(t);
 				} catch (Exception e) {
-					logger.error(LogbackUtil.expection2Str(e));
+					logger.error(ExceptionHelper.stackTrace(e));
 				}
 
 			}
 		} catch (SQLException e) {
-			logger.error("Exception:{}", LogbackUtil.expection2Str(e));
+			logger.error("Exception:{}", ExceptionHelper.stackTrace(e));
 		}
 
 		return ts;
@@ -64,7 +64,7 @@ public class DatabaseUtils {
 		try (Connection conn = DatabaseConnectionFactory.getInstance().getConnection(); PreparedStatement statement = conn.prepareStatement(sql)) {
 			return statement.executeUpdate();
 		} catch (SQLException e) {
-			logger.error("Exception:{}", LogbackUtil.expection2Str(e));
+			logger.error("Exception:{}", ExceptionHelper.stackTrace(e));
 		}
 		return -1;
 	}

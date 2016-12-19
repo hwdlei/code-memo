@@ -18,12 +18,25 @@
  */
 package edu.hfut.parquet.avro.utils;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericData;
 import org.apache.avro.generic.GenericRecord;
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.Path;
+import org.apache.parquet.avro.AvroParquetReader;
+import org.apache.parquet.avro.AvroParquetWriter;
+import org.apache.parquet.avro.AvroReadSupport;
+import org.apache.parquet.hadoop.ParquetReader;
+import org.apache.parquet.hadoop.ParquetWriter;
 import org.codehaus.jackson.node.NullNode;
+import org.junit.Assert;
+import org.junit.rules.TemporaryFolder;
 
 import com.google.common.collect.Lists;
 
@@ -52,13 +65,11 @@ public class AvroTestUtil {
 	}
 
 	public static Schema optional(Schema original) {
-		return Schema.createUnion(Lists.newArrayList(
-				Schema.create(Schema.Type.NULL),
-				original));
+		return Schema.createUnion(Lists.newArrayList(Schema.create(Schema.Type.NULL), original));
 	}
 
 	public static GenericRecord instance(Schema schema, Object... pairs) {
-		if (pairs.length % 2 != 0) {
+		if ((pairs.length % 2) != 0) {
 			throw new RuntimeException("Not enough values");
 		}
 		GenericRecord record = new GenericData.Record(schema);
@@ -68,4 +79,41 @@ public class AvroTestUtil {
 		return record;
 	}
 
+	public static <D> List<D> read(GenericData model, Schema schema, File file) throws IOException {
+		List<D> data = new ArrayList<>();
+		Configuration conf = new Configuration(false);
+		AvroReadSupport.setRequestedProjection(conf, schema);
+		AvroReadSupport.setAvroReadSchema(conf, schema);
+		ParquetReader<D> fileReader = AvroParquetReader.<D>builder(new Path(file.toString())).withDataModel(model) // reflect disables compatibility
+						.withConf(conf).build();
+
+		try {
+			D datum;
+			while ((datum = fileReader.read()) != null) {
+				data.add(datum);
+			}
+		} finally {
+			fileReader.close();
+		}
+
+		return data;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <D> File write(TemporaryFolder temp, GenericData model, Schema schema, D... data) throws IOException {
+		File file = temp.newFile();
+		Assert.assertTrue(file.delete());
+		ParquetWriter<D> writer = AvroParquetWriter.<D>builder(new Path(file.toString())).withDataModel(model)
+						.withSchema(schema).build();
+
+		try {
+			for (D datum : data) {
+				writer.write(datum);
+			}
+		} finally {
+			writer.close();
+		}
+
+		return file;
+	}
 }
