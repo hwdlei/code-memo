@@ -33,6 +33,7 @@ public class HashingDemo {
 		System.out.println(hc3.toString());
 		HashCode hc4 = hf.newHasher().putString("abcdefghijklmnopqrstuvwxyz", Charsets.UTF_8).hash();
 		System.out.println(hc4.toString());
+		System.out.println(hf.hashString("", Charsets.UTF_8));
 
 	}
 
@@ -45,10 +46,11 @@ public class HashingDemo {
 		Funnel<Person> personFunnel = new Funnel<Person>() {
 			private static final long serialVersionUID = 5834640829134516623L;
 
+			@Override
 			public void funnel(Person from, PrimitiveSink into) {
 				// TODO Auto-generated method stub
 				into.putInt(from.id).putString(from.firstName, Charsets.UTF_8).putString(from.lastName, Charsets.UTF_8)
-						.putInt(from.birthYear);
+				.putInt(from.birthYear);
 			}
 		};
 		Person person = new Person();
