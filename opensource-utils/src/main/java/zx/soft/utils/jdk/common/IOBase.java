@@ -1,40 +1,49 @@
-package zx.soft.utils.jdk.common;
+package zx.soft.utils.jdk.commom;
 
+import java.io.BufferedInputStream;
 import java.io.DataInputStream;
-import java.io.EOFException;
 import java.io.IOException;
 
 public class IOBase {
 
-	private DataInputStream is;
+    private BufferedInputStream is;
 
-	public IOBase(DataInputStream data) {
-		this.is = data;
-	}
+    private boolean             eof;
 
-	protected boolean readBytes(byte[] buf) {
-		try {
-			this.is.readFully(buf);
-			return true;
-		} catch (EOFException e) {
-			return false;
-		} catch (IOException e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
+    public IOBase(DataInputStream data) {
+        this.is = new BufferedInputStream(data);
+        this.eof = false;
+    }
 
-	protected int readBytes2(byte[] buf) throws IOException {
-		return this.is.read(buf);
-	}
+    protected boolean readFully(byte[] buf) {
+        try {
+            int i = 0;
+            while (!this.eof && i != buf.length) {
+                int num = this.is.read(buf, i, buf.length - i);
+                if (num == -1) {
+                    this.eof = true;
+                    System.out.println("Has reached the eof. has read " + i);
+                    return false;
+                }
+                i += num;
+            }
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
+    }
 
-	public void close() {
-		try {
-			this.is.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+    protected int readBytes(byte[] buf) throws IOException {
+        return this.is.read(buf);
+    }
+
+    public void close() {
+        try {
+            this.is.close();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
 }
