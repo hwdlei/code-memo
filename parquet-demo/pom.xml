@@ -10,7 +10,7 @@
 
 	<properties>
 		<parquet.version>1.8.1</parquet.version>
-		<cdh.hadoop.version>2.6.0-cdh5.4.9</cdh.hadoop.version>
+		<cdh.hadoop.version>2.7.0</cdh.hadoop.version>
 	</properties>
 
 	<dependencies>
