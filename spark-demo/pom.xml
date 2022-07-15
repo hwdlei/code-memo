@@ -10,7 +10,7 @@
 	<properties>
 		<scala.binary.version>2.10</scala.binary.version>
 		<spark.version>1.5.1</spark.version>
-		<fasterxml.jackson.version>2.4.4</fasterxml.jackson.version>
+		<fasterxml.jackson.version>2.12.6.1</fasterxml.jackson.version>
 	</properties>
 
 	<dependencies>
